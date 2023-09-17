@@ -6,17 +6,17 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class KafkaProducer {
+public class StringKafkaProducer {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaProducer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(StringKafkaProducer.class);
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
+    public StringKafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     public void sendMessage(String message){
-        LOGGER.info(String.format("Message sent %s", message));
-        kafkaTemplate.send("topic1", message);
+        LOGGER.warn(String.format("Message sent %s", message));
+        kafkaTemplate.send("topic", message);
     }
 }
